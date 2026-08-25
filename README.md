@@ -1,10 +1,10 @@
-# CTA Transit Alerts Dashboard
+# Transit Alert Metrics
 
-A compact dashboard for monitoring CTA service alerts, planned work, and active transit disruptions across Chicago train and bus routes.
+Transit Alert Metrics (TAM) is a real-time CTA service disruption monitoring platform for tracking live alerts, route-level impacts, and trend analysis across Chicago’s rail and bus network.
 
 ## Project Overview
 
-- Pulls live alert data from the CTA API
+- Pulls live alert data from the CTA Customer Alerts API
 - Normalizes and classifies impacted lines and routes
 - Stores alert history in PostgreSQL via Drizzle ORM
 - Exposes API routes for dashboard rendering and scheduled ingestion
