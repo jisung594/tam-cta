@@ -82,6 +82,10 @@ export async function GET() {
             ? LINE_MAP[rawCode].line
             : undefined;
 
+        if (lineColor) {
+          counts[lineColor] += 1;
+        }
+
         affectedServices.push({
           serviceType: lineColor ? 'L' : 'Bus',
           lineColor, // only valid CTA line names, never route names or IDs
