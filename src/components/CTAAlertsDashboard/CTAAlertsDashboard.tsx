@@ -233,14 +233,13 @@ const CTAAlertsDashboard = () => {
           {/* Two-column layout for charts and alerts list */}
           <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="h-auto lg:h-100 grid gap-6 lg:col-span-1">
+              <div className="h-64 w-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                <p className="text-sm text-slate-400">Active Alerts (L Trains)</p>
+                <AlertsRadialChart data={aggregatedAlerts} />
+              </div>
               <div className="w-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                 <p className="text-sm text-slate-400">Weekly Summary</p>
                 <LineBreakdownChart />
-              </div>
-
-              <div className="h-64 w-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                <p className="text-sm text-slate-400">Active Alerts (L Train)</p>
-                <AlertsRadialChart data={aggregatedAlerts} />
               </div>
             </div>
 
