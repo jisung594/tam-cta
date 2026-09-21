@@ -4,6 +4,7 @@ import { useMemo, useEffect,useState } from 'react';
 import type { CTALine, CTAServiceAlert } from '../../types/alerts';
 import { aggregateAlertsByLine } from '../../utils/chartHelpers';
 import { AlertsRadialChart } from '../AlertsRadialChart/AlertsRadialChart';
+import { LineBreakdownChart } from '../analytics/LineBreakdownChart/LineBreakdownChart';
 
 const LINE_STYLES: Record<CTALine, { base: string; active: string; dot: string }> = {
   Red: {
@@ -145,7 +146,7 @@ const CTAAlertsDashboard = () => {
   if (loading) {
     return (
       <main className="min-h-screen bg-slate-50 text-slate-900 flex items-center justify-center">
-        <p className="text-sm font-medium text-slate-500">Loading live CTA alerts...</p>
+        <p className="text-sm font-medium text-slate-500">Loading alerts...</p>
       </main>
     );
   }
@@ -162,15 +163,14 @@ const CTAAlertsDashboard = () => {
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto max-w-6xl p-4 sm:p-6 lg:p-8">
         <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-          
           {/* Header */}
           <div className="flex flex-col gap-3 border-b border-slate-200 pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">
-                CTA Alerts Console
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                CTA System Alerts (Live Snapshot)
               </p>
               <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">
-                Realtime CTA System Alerts
+                Transit Alert Metrics (TAM)
               </h1>
             </div>
             <p className="text-sm font-medium text-slate-600">
@@ -232,9 +232,14 @@ const CTAAlertsDashboard = () => {
 
           {/* Two-column layout for charts and alerts list */}
           <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-1">
+            <div className="h-auto lg:h-100 grid gap-6 lg:col-span-1">
+              <div className="w-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                <p className="text-sm text-slate-400">Weekly Summary</p>
+                <LineBreakdownChart />
+              </div>
+
               <div className="h-64 w-full rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                <p className="text-sm text-slate-400">L Train Alerts</p>
+                <p className="text-sm text-slate-400">Active Alerts (L Train)</p>
                 <AlertsRadialChart data={aggregatedAlerts} />
               </div>
             </div>
