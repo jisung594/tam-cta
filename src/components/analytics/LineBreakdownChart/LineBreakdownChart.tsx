@@ -71,16 +71,16 @@ export function LineBreakdownChart() {
           Planned vs. Unplanned Alerts
         </h3>
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          Aggregated service impacts recorded over 7-day periods.
+          Aggregated service disruptions recorded over 7-day periods.
         </p>
       </div>
 
       <div className="h-80 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={chartData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+          <BarChart data={chartData} margin={{ top: 20, right: 8, left: -8, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
             <XAxis dataKey="line" />
-            <YAxis />
+            <YAxis width={35}/>
             <Tooltip
               contentStyle={{
                 backgroundColor: '#18181b',
@@ -89,7 +89,10 @@ export function LineBreakdownChart() {
                 color: '#fff',
               }}
             />
-            <Legend />
+            <Legend 
+              align="left"
+              wrapperStyle={{ padding:'16px', fontSize: '14px' }}
+            />
             {/* Setting stackId="a" on both Bar components stacks them on top of each other */}
             <Bar dataKey="planned" name="Planned Maintenance" stackId="a" fill="#3b82f6" />
             <Bar dataKey="unplanned" name="Unplanned Delays" stackId="a" fill="#ef4444" />
@@ -99,8 +102,8 @@ export function LineBreakdownChart() {
 
       {/* Slider for weekly view */}
       <div className="flex flex-col gap-2">
-        <div className="flex justify-between items-center text-sm font-medium">
-          <span>Time Frame</span>
+        <div className="flex justify-between items-center text-xs font-medium">
+          <span>Timeframe</span>
           <span>{getLabel(weeksAgo)}</span>
         </div>
         <input 
