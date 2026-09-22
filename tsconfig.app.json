@@ -11,7 +11,8 @@
     "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@": ["./src"]
+      "@db": ["./src/db"],
+      "@db/*": ["./src/db/*"]
     },
 
     /* Bundler mode */
@@ -28,5 +29,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "app"]
 }
