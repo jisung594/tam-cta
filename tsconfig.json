@@ -3,14 +3,16 @@
     "baseUrl": ".",
     "ignoreDeprecations": "6.0",
     "types": ["node"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@": ["./src"]
+      "@db": ["./src/db"],
+      "@db/*": ["./src/db/*"]
     }
   },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "include": ["src", "app", "next-env.d.ts"]
 }
